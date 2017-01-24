@@ -4,8 +4,7 @@ function getLastProducts($limit = null, $db)
 {
     $sql = "SELECT *
             FROM products
-            ORDER BY id DESC";
-    
+            ORDER BY id DESC";    
     if ($limit) { $sql .= " LIMIT $limit"; }
     
     $query = mysqli_query($db, $sql);
@@ -15,8 +14,7 @@ function getLastProducts($limit = null, $db)
 
 function getProductsByCat($catId, $db) 
 {
-    $catId = intval($catId);
-    
+    $catId = intval($catId);    
     $sql = "SELECT * 
             FROM products
             WHERE category_id = $catId";    
@@ -28,10 +26,9 @@ function getProductsByCat($catId, $db)
 
 function getProductById($prodId, $db) 
 {
-    $prodId = intval($prodId);
-    
+    $prodId = intval($prodId);    
     $sql = "SELECT * 
-            FROM categories
+            FROM products
             WHERE id = $prodId";
     
     $query = mysqli_query($db, $sql);
