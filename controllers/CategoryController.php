@@ -10,15 +10,16 @@ function indexAction ($smarty, $db)
     
     $childCats = null;
     $productsByCat = null;
-    $category = getCatById($catId, $db);        
+    $categories = getCatById($catId, $db);  
     
-    if ($category['parent_id'] == 0) {
+      
+    if ($categories['parent_id'] == 0) {
         $childCats = getChildrenForCat($catId, $db);
     } else {
         $productsByCat = getProductsByCat($catId, $db);
     }    
     
-    indexCatSmartyAssign($category, $productsByCat, $childCats, $smarty, $db);
-    indexCatDisplay($smarty, $db); 
+    indexCatsSmartyAssign($categories, $productsByCat, $childCats, $smarty, $db);
+    indexCatsDisplay($smarty, $db); 
 }
 

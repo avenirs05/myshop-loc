@@ -33,19 +33,33 @@ function indexDisplay($smarty, $db)
     $smarty->display('footer' . TemplatePostfix);
 }
 
-function indexCatSmartyAssign($category, $productsByCat, $childCats, $smarty, $db) 
+function indexCatsSmartyAssign($categories, $productsByCat, $childCats, $smarty, $db) 
 {
-    $smarty->assign('pageTitle', 'Товары категории ' . $category['name']);
-    $smarty->assign('category', $category);
+    $smarty->assign('pageTitle', 'Товары категории ' . $categories['name']);
+    $smarty->assign('category', $categories);
     $smarty->assign('productsByCat', $productsByCat);
     $smarty->assign('childCats', $childCats);
     $smarty->assign('all_Main_Cats_With_Children', getAllMainCatsWithChildren($db));
 }
 
-function indexCatDisplay($smarty, $db) 
+function indexCatsDisplay($smarty, $db) 
 {
     $smarty->display('header' . TemplatePostfix);
     $smarty->display('category' . TemplatePostfix);
+    $smarty->display('footer' . TemplatePostfix);
+}
+
+function indexProdsSmartyAssign($prodId, $smarty, $db)  
+{
+    $smarty->assign('pageTitle', '');
+    $smarty->assign('all_Main_Cats_With_Children', getAllMainCatsWithChildren($db));
+    $smarty->assign('product', getProductById($prodId, $db));
+}
+
+function indexProdsDisplay($smarty, $db) 
+{
+    $smarty->display('header' . TemplatePostfix);
+    $smarty->display('product' . TemplatePostfix);
     $smarty->display('footer' . TemplatePostfix);
 }
 

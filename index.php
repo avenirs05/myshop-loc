@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (! isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
 
 include_once 'config/config.php'; 
 include_once 'config/db.php'; 

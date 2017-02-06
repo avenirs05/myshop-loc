@@ -10,8 +10,6 @@
     {if $item@iteration is div by 3}
         <div style="clear: both;"></div>
     {/if}
-    {foreachelse}
-        Нет товаров
 {/foreach} 
 
 {foreach $childCats as $item}
@@ -19,6 +17,16 @@
         <a href="/category/{$item.id}">
             {$item.name}
         </a>    
-    </h2>
+    </h2>            
 {/foreach} 
+
+{if  $productsByCat|count == 0 and $childCats|count == 0}
+Нет товаров
+{/if}
+
+
+
+ 
+
+
 
