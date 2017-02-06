@@ -51,6 +51,10 @@ function indexCatsDisplay($smarty, $db)
 
 function indexProdsSmartyAssign($prodId, $smarty, $db)  
 {
+    $smarty->assign('itemInCart', 0);
+    if (in_array($prodId, $_SESSION['cart'])) {
+        $smarty->assign('itemInCart', 1);
+    }
     $smarty->assign('pageTitle', '');
     $smarty->assign('all_Main_Cats_With_Children', getAllMainCatsWithChildren($db));
     $smarty->assign('product', getProductById($prodId, $db));
