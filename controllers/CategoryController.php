@@ -23,3 +23,18 @@ function indexAction ($smarty, $db)
     indexCatsDisplay($smarty, $db); 
 }
 
+function indexCatsSmartyAssign($categories, $productsByCat, $childCats, $smarty, $db) 
+{
+    $smarty->assign('pageTitle', 'Товары категории ' . $categories['name']);
+    $smarty->assign('category', $categories);
+    $smarty->assign('productsByCat', $productsByCat);
+    $smarty->assign('childCats', $childCats);
+    $smarty->assign('all_Main_Cats_With_Children', getAllMainCatsWithChildren($db));
+}
+
+function indexCatsDisplay($smarty, $db) 
+{
+    $smarty->display('header' . TemplatePostfix);
+    $smarty->display('category' . TemplatePostfix);
+    $smarty->display('footer' . TemplatePostfix);
+}

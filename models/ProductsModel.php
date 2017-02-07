@@ -35,3 +35,16 @@ function getProductById($prodId, $db)
 
     return mysqli_fetch_assoc($query);
 }
+
+function getProductsFromArray($itemsIds, $db)
+{
+    $strIds = implode($itemsIds, ', ');
+    $sql = "SELECT * 
+            FROM products
+            WHERE id in ({$strIds})";    
+    $query = mysqli_query($db, $sql);
+    
+    return createSmartyRsArray($query);    
+}
+
+

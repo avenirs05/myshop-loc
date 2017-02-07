@@ -39,3 +39,18 @@ function removeFromCartAction($db)
     echo json_encode($resData);      
 }
 
+function indexAction ($smarty, $db) 
+{
+    $itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+    
+    $products = getProductsFromArray($itemsIds, $db);
+    
+    $smarty->assign('pageTitle', 'Корзина');
+    $smarty->assign('rsCategories', getAllMainCatsWithChildren($db));
+    $smarty->assign('products', $products);
+    
+    $smarty->display('header' . TemplatePostfix);
+    $smarty->display('cart' . TemplatePostfix);
+    $smarty->display('footer' . TemplatePostfix);
+}
+
