@@ -46,7 +46,7 @@ function indexAction ($smarty, $db)
     $products = getProductsFromArray($itemsIds, $db);
     
     $smarty->assign('pageTitle', 'Корзина');
-    $smarty->assign('rsCategories', getAllMainCatsWithChildren($db));
+    $smarty->assign('all_Main_Cats_With_Children', getAllMainCatsWithChildren($db));
     $smarty->assign('products', $products);
     
     $smarty->display('header' . TemplatePostfix);

@@ -30,3 +30,11 @@ function removeFromCart(itemId) {
     });
 }
 
+function conversionPrice (itemId) {
+    var newCnt = $('#itemCnt_' + itemId).val();
+    var itemPrice = $('#itemPrice_' + itemId).attr('value');
+    var itemTotalPrice = newCnt * itemPrice;
+    
+    $('#itemTotalPrice_' + itemId).html(itemTotalPrice);
+}
+
