@@ -3,7 +3,7 @@
 include_once 'models/CategoriesModel.php';
 include_once 'models/ProductsModel.php';
 
-function addToCartAction($db) 
+function addToCartAction($smarty, $db) 
 {
     $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
     if (! $itemId) { return false; }

@@ -1,5 +1,5 @@
 function addToCart(itemId) {
-    console.log("js - addToCart()");
+    console.log("js 1- addToCart()");
     $.ajax({
         type: 'POST', 
         url: "/cart/addtocart/" + itemId + '/',
