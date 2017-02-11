@@ -11,7 +11,7 @@ include_once 'models/UsersModel.php';
  * @return json массив данных нового пользователя
  */
 
-function registerAction () 
+function registerAction ($smarty, $db) 
 {
     $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
     $email = trim($email);
@@ -26,9 +26,35 @@ function registerAction ()
     
     $resData = null;
     $resData = checkRegisterParams($email, $pwd1, $pwd2);  
+    
+    if (!$resData && checkUserEmail($email, $db)) {
+        $resData['success'] = false;
+        $resData['message'] = "Пользователь с таким email('{$email}') уже зарегистрирован";
+    }
+    
+    if (! $resData) {
+        $pwdMD5 = md5($pwd1);
+        $userData = registerNewUser($email, $pwdMD5, $name, $phone, $address, $db);
+        
+        if ($userData['success']) {
+            $resData['message'] = 'Пользователь успешно зарегистрирован';
+            $resData['success'] = 1;
+
+            $userData = $userData[0];
+            $resData['userName'] = $userData['name'] ? $userData['name'] : $userData['email'];
+            $resData['userEmail'] = $email;
+
+            $_SESSION['user'] = $userData;
+            $_SESSION['user']['displayName'] = 
+                $userData['name'] ? $userData['name'] : $userData['email'];      
+        } else {
+            $resData['success'] = 0;
+            $resData['message'] = 'Ошибка регистрации';
+        } 
+    }   
+      
+      echo json_encode($resData);   
+
 }
-
-
-
 
 

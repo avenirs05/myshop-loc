@@ -7,6 +7,8 @@ $dbpasswd = '';
 
 $db = mysqli_connect($dblocation, $dbuser, $dbpasswd, $dbname);
 
+
+
 if (! $db) {
     echo 'Ошибка доступа к MySql';
     exit();
