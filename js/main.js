@@ -61,11 +61,11 @@ function registerNewUser() {
                 alert('Регистрация прошла успешно');
                 $('#registerBox').hide();
                 
-                //$('#userLink').attr('href', '/user/');
-                //$('#userLink').html(data['userName']);
-                //$('#userBox').show();
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['userName']);
+                $('#userBox').show();
                 
-                //$('#loginBox').hide();
+                $('#loginBox').hide();
                 //$('#btnSaveOrder').show();
                 
             }

@@ -4,6 +4,7 @@ include_once 'models/CategoriesModel.php';
 //include_once 'models/OrdersModel.php';
 include_once 'models/UsersModel.php';
 
+
 /**
  * AJAX регистрация пользователя
  * Инициализация сессионной переменной ($_SESSION['user'])
@@ -53,8 +54,18 @@ function registerAction ($smarty, $db)
         } 
     }   
       
-      echo json_encode($resData);   
+    echo json_encode($resData);
+}
 
+
+function logoutAction() 
+{
+    if (isset($_SESSION['user'])) {
+        unset($_SESSION['user']);
+        unset($_SESSION['cart']);
+    }
+    
+    redirect('/');
 }
 
 
