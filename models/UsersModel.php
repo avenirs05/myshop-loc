@@ -79,6 +79,26 @@ function checkUserEmail($email, $db)
 }
 
 
+function loginUser($email, $pwd, $db) 
+{
+    $email = htmlspecialchars($email);
+    $pwd = md5($pwd);
+    $sql = "SELECT * FROM users
+            WHERE (`email` = '{$email}' and `pwd` = '{$pwd}')
+            LIMIT 1";
+    $res = mysqli_query($db, $sql);
+    
+    $res = createSmartyRsArray($res);
+    if (isset($res[0])) {
+        $res['success'] = 1;
+    } else {
+        $res['success'] = 0;
+    }
+    
+    return $res;    
+}
+
+
 
 
 

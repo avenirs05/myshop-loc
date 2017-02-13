@@ -14,6 +14,7 @@ function addToCart(itemId) {
     });
 }
 
+
 function removeFromCart(itemId) {
     console.log("js - removeFromCart()");
     $.ajax({
@@ -30,6 +31,7 @@ function removeFromCart(itemId) {
     });
 }
 
+
 function conversionPrice (itemId) {
     var newCnt = $('#itemCnt_' + itemId).val();
     var itemPrice = $('#itemPrice_' + itemId).attr('value');
@@ -37,6 +39,7 @@ function conversionPrice (itemId) {
     
     $('#itemTotalPrice_' + itemId).html(itemTotalPrice);
 }
+
 
 function getData(obj) {
     var hData = {};
@@ -48,6 +51,7 @@ function getData(obj) {
     });
     return hData;
 }
+
 
 function registerNewUser() {
     var postData = getData('#registerBox');    
